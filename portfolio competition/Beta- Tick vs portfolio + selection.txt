@@ -1,0 +1,118 @@
+Annual_Return:0.5797063200843735 
+ dayily_vol:0.24193539505919082 
+ Max beta is:alxn   1.2901563
+dtype: object 
+ Adjusted ticker List:['nflx', 'nvda', 'baba', 'bidu', 'twtr', 'tsla', 'aapl', 'amzn', 'enph', 'fb', 'goog', 'fslr', 'sedg', 'axp', 'ben', 'amgn', 'etn'] 
+
+
+Annual_Return:0.5834303210620642 
+ dayily_vol:0.23002254815883386 
+ Max beta is:enph   1.4541007
+dtype: object 
+ Adjusted ticker List:['nflx', 'nvda', 'baba', 'bidu', 'twtr', 'tsla', 'aapl', 'amzn', 'fb', 'goog', 'fslr', 'sedg', 'axp', 'ben', 'amgn', 'etn'] 
+
+
+Annual_Return:0.5505461874269011 
+ dayily_vol:0.22851523017157477 
+ Max beta is:sedg   1.2426233
+dtype: object 
+ Adjusted ticker List:['nflx', 'nvda', 'baba', 'bidu', 'twtr', 'tsla', 'aapl', 'amzn', 'fb', 'goog', 'fslr', 'axp', 'ben', 'amgn', 'etn'] 
+
+
+Annual_Return:0.5318440223703629 
+ dayily_vol:0.2264416263691445 
+ Max beta is:nvda   1.2240646
+dtype: object 
+ Adjusted ticker List:['nflx', 'baba', 'bidu', 'twtr', 'tsla', 'aapl', 'amzn', 'fb', 'goog', 'fslr', 'axp', 'ben', 'amgn', 'etn'] 
+
+
+Annual_Return:0.5149082472020046 
+ dayily_vol:0.22503250602481262 
+ Max beta is:twtr   1.2115463
+dtype: object 
+ Adjusted ticker List:['nflx', 'baba', 'bidu', 'tsla', 'aapl', 'amzn', 'fb', 'goog', 'fslr', 'axp', 'ben', 'amgn', 'etn'] 
+
+
+Annual_Return:0.488414677581964 
+ dayily_vol:0.22359240541488945 
+ Max beta is:bidu   1.2223315
+dtype: object 
+ Adjusted ticker List:['nflx', 'baba', 'tsla', 'aapl', 'amzn', 'fb', 'goog', 'fslr', 'axp', 'ben', 'amgn', 'etn'] 
+
+
+Annual_Return:0.36432145149260675 
+ dayily_vol:0.21904324458325905 
+ Max beta is:fslr   1.1619820
+dtype: object 
+ Adjusted ticker List:['nflx', 'baba', 'tsla', 'aapl', 'amzn', 'fb', 'goog', 'axp', 'ben', 'amgn', 'etn'] 
+
+
+Annual_Return:0.3424142478421166 
+ dayily_vol:0.218214381063687 
+ Max beta is:ben   1.1553363
+dtype: object 
+ Adjusted ticker List:['nflx', 'baba', 'tsla', 'aapl', 'amzn', 'fb', 'goog', 'axp', 'amgn', 'etn'] 
+
+
+Annual_Return:0.375341260377283 
+ dayily_vol:0.21500098847113921 
+ Max beta is:tsla   1.2425750
+dtype: object 
+ Adjusted ticker List:['nflx', 'baba', 'aapl', 'amzn', 'fb', 'goog', 'axp', 'amgn', 'etn'] 
+
+
+Annual_Return:0.30128882476860475 
+ dayily_vol:0.21366735091506311 
+ Max beta is:nflx   1.1754325
+dtype: object 
+ Adjusted ticker List:['baba', 'aapl', 'amzn', 'fb', 'goog', 'axp', 'amgn', 'etn'] 
+
+
+Annual_Return:0.2865544310222987 
+ dayily_vol:0.21288805444492168 
+ Max beta is:fb   1.1127088
+dtype: object 
+ Adjusted ticker List:['baba', 'aapl', 'amzn', 'goog', 'axp', 'amgn', 'etn'] 
+
+
+Annual_Return:0.2822658787450192 
+ dayily_vol:0.21161248908617336 
+ Max beta is:axp   1.1377152
+dtype: object 
+ Adjusted ticker List:['baba', 'aapl', 'amzn', 'goog', 'amgn', 'etn'] 
+
+
+Annual_Return:0.3301135811633662 
+ dayily_vol:0.21284527166049866 
+ Max beta is:aapl   1.0438767
+dtype: object 
+ Adjusted ticker List:['baba', 'amzn', 'goog', 'amgn', 'etn'] 
+
+
+Annual_Return:0.2923234927890359 
+ dayily_vol:0.21221139016352447 
+ Max beta is:baba   1.0488799
+dtype: object 
+ Adjusted ticker List:['amzn', 'goog', 'amgn', 'etn'] 
+
+
+Annual_Return:0.3072384195722895 
+ dayily_vol:0.21493568621127546 
+ Max beta is:amgn   1.0345342
+dtype: object 
+ Adjusted ticker List:['amzn', 'goog', 'etn'] 
+
+
+Annual_Return:0.43376481104651354 
+ dayily_vol:0.2275952731250339 
+ Max beta is:etn   1.0316743
+dtype: object 
+ Adjusted ticker List:['amzn', 'goog'] 
+
+
+Annual_Return:0.5064999018567613 
+ dayily_vol:0.258058808486589 
+ Max beta is:amzn   1.0001034
+dtype: object 
+ Adjusted ticker List:['goog'] 
+
