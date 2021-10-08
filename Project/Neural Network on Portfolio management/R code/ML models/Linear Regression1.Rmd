@@ -1,0 +1,94 @@
+---
+title: "Module 2a Lab"
+author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+## Training vs. Test Data
+## Code Chunk 1
+```{r}
+Auto = read.csv("C:/C/MKT500S/Data/Auto.csv",header = T, na.strings = "?")
+
+Auto = na.omit(Auto)
+
+dim(Auto)
+
+set.seed(1)
+
+train = sample(nrow(Auto),nrow(Auto)/2,replace = FALSE)
+
+train
+
+Auto.Train = Auto[train,]
+
+Auto.Test = Auto[-train,]
+
+dim(Auto.Train)
+
+dim(Auto.Test)
+
+```
+
+
+
+## KNN 
+## Training and Test Data
+## Code Chunk 2
+```{r}
+library(ISLR)
+
+attach(Smarket)
+
+table(Year)
+
+train = (Year<2005)
+
+train
+
+train.X = cbind(Lag1,Lag2)[train,]
+
+dim(train.X)
+
+test.X = cbind(Lag1,Lag2)[!train,]
+
+dim(test.X)
+
+table(Direction)
+
+train.Direction = Direction[train]
+
+Direction.2005 = Direction[!train]
+```
+
+## KNN
+## Model Building
+## k = 1
+## Code Chunk 3
+```{r}
+library(class)
+
+set.seed(1)
+
+knn.pred = knn(train.X,test.X,train.Direction,k=1)
+
+table(knn.pred,Direction.2005)
+
+mean(knn.pred == Direction.2005)
+
+knn.pred.train = knn(train.X, train.X, train.Direction, k = 1)
+table(knn.pred.train,train.Direction)
+mean(knn.pred.train == train.Direction)
+```
+
+## KNN
+## Model Building
+## k = 3
+## Code Chunk 4
+```{r}
+knn.pred = knn(train.X,test.X,train.Direction,k=3)
+
+table(knn.pred,Direction.2005)
+
+mean(knn.pred == Direction.2005)
+
+```
+

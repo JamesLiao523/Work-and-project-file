@@ -1,0 +1,102 @@
+1. Run a neural net model on these data, using a single hidden layer with 5 nodes. Remember to first convert categorical variables into dummies and scale numerical predictor variables to a 0-1 (use function preprocess() with method=“range” - see Chapter 7). Generate a deciles-wise lift chart for the training and validation sets. Interpret the meaning (in business terms) of the leftmost bar of the validation decile- wise lift chart.
+
+```{r}
+library(neuralnet)
+library(caret)
+
+```
+
+```{r}
+library(gains)
+
+df = read.csv("C://Users/james/Desktop/EastWestAirlinesNN.csv")
+df = na.omit(df)
+df = predict(preProcess(df,method ="range"),df)
+df=df[,-1]
+row_num = nrow(df)
+set.seed(1)
+Train_per = 0.5
+Train = sample(row_num,floor(Train_per*row_num))
+TrainData = df[Train,]
+TestData = df[-Train,]
+nn = neuralnet(Phone_sale ~ ., data = df, linear.output = F, hidden = 5)
+nn_Train = neuralnet(Phone_sale ~ ., data = TrainData, linear.output = F, hidden = 5)
+nn_Test = neuralnet(Phone_sale ~ ., data = TestData, linear.output = F, hidden = 5)
+predict_nn = prediction(nn)
+
+```
+
+```{r}
+predict_nn_Train = prediction(nn_Train)
+predict_nn_Test = prediction(nn_Test)
+```
+
+
+```{r}
+predict_final = predict(nn_Train, TestData)
+gain = gains(TestData[,15], predict_final)
+barplot(gain$mean.resp / mean(TestData[,15]), names.arg = gain$depth, xlab = "Percentile",
+ylab = "Mean Response", main = "Decile-wise lift chart")
+
+```
+
+The bars show the factor by our model which outperforms a random assignment of 0’s and 1’s.
+We can find that the 10% of the records  ranked by the model as “the most probable 1’s” yields twice as many 1’s as would a random selection of 10% of the records.
+
+
+2. Comment on the difference between the training and validation lift charts.
+
+```{r}
+gain = gains(TestData[,15], predict_final, groups=dim(predict_final)[1])
+```
+
+```{r}
+plot(c(0, gain$cume.pct.of.total*sum(TestData[,15])) ~ c(0, gain$cume.obs), xlab = "# cases", ylab = "Cumulative", type="l")
+lines ( c(0,sum(TestData[,15]))~c(0, dim(predict_final)[1]), col="gray", lty=2 )
+
+```
+
+According to the chart above, the model classification performance is acceptable.
+
+
+
+
+3. Run a second neural net model on the data, this time setting the number of hidden nodes to 1. Comment now on the difference between this model and the model you ran earlier, and how overfitting might have affected results.
+
+
+```{r}
+nn_2 = neuralnet(Phone_sale ~ ., data = TrainData, linear.output = F, hidden = 1)
+nn_2_class = predict(nn_2,TestData)
+
+Train_RMS_1 = sqrt(sum((TrainData$Phone_sale-predict_final)^2)/nrow(TrainData))
+Train_RMS_2 = sqrt(sum((TrainData$Phone_sale-nn_2_class)^2)/nrow(TrainData))
+Test_RMS_1 = sqrt(sum((TestData$Phone_sale-predict_final)^2)/nrow(TestData))
+Test_RMS_2 = sqrt(sum((TestData$Phone_sale-nn_2_class)^2)/nrow(TestData))
+```
+
+
+```{r}
+Train_RMS_2
+
+```
+
+```{r}
+Test_RMS_1
+
+```
+
+```{r}
+Test_RMS_2
+
+```
+
+Based on the result, both Test and Train RMS of model of 1 nodes is lower than that of 5 nodes. In addition, when the  hidden nodes is 5,  model is subjected to  overfitting issue compared to 1 node.
+
+
+4. What sort of information, if any, is provided about the effects of the various variables?
+
+```{r}
+nn_Train$weights
+```
+Based on the weights table, we can see the effects of variables
+model.

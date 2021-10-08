@@ -1,0 +1,88 @@
+---
+title: "Bootstrap"
+author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+
+## 5.3.4 The Bootstrap
+## Code Chunk 1
+```{r}
+library(ISLR)
+
+fix(Portfolio)
+
+dim(Portfolio)
+```
+
+##Code Chunk 2
+```{r}
+
+alpha.fn = function(data,index){
+ X = data$X[index]
+ Y = data$Y[index]
+ return((var(Y)-cov(X,Y))/(var(X)+var(Y)-2*cov(X,Y)))
+}
+
+
+alpha.fn(Portfolio,1:100)
+```
+##Code Chunk 3
+```{r}
+set.seed(1)
+
+alpha.fn(Portfolio,sample(1:100,100,replace = T))
+
+```
+## Code Chunk 4
+```{r}
+
+library(boot)
+
+boot(Portfolio,alpha.fn, R=1000)
+```
+
+
+## Estimating the accuracy of a Linear Regression Model
+## Code Chunk 5
+```{r}
+boot.fn = function(data,index){
+  return(coef(lm(mpg~horsepower,data=data,subset = index)))
+}
+
+dim(Auto)
+
+boot.fn(Auto,1:392)
+```
+
+## Code Chunk 6
+```{r}
+
+set.seed(1)
+
+boot.fn(Auto,sample(1:392,392,replace = T))
+
+boot.fn(Auto,sample(1:392,392,replace = T))
+```
+
+## Code Chunk 7
+```{r}
+
+boot(Auto,boot.fn,1000)
+
+summary(lm(mpg~horsepower,data = Auto))$coef
+```
+
+## Code Chunk 8
+```{r}
+boot.fn = function(data,index){
+   coefficients(lm(mpg~horsepower+I(horsepower^2),data=data,subset=index))
+}
+
+set.seed(1)
+
+boot(Auto,boot.fn,1000)
+
+summary(lm(mpg~horsepower+I(horsepower^2),data=Auto))$coef
+
+```
+

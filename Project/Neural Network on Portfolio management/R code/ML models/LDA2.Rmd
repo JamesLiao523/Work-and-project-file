@@ -1,0 +1,75 @@
+---
+title: "Lab4-LDA"
+author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+## 4.6.3 Linear Discriminant Ananlysis 
+## Code Chunk 1
+```{r}
+library(ISLR)
+
+attach(Smarket)
+
+train = (Year<2005)
+
+train
+
+Smarket.2005 = Smarket[!train,]
+
+dim(Smarket.2005)
+
+Direction.2005 = Direction[!train]
+```
+
+## Code Chunk 2
+```{r}
+library(MASS)
+
+lda.fit = lda(Direction~Lag1+Lag2,data=Smarket,subset = train)
+
+lda.fit
+
+```
+
+## Code Chunk 3
+```{r}
+lda.pred = predict(lda.fit,Smarket.2005)
+
+names(lda.pred)
+
+lda.class = lda.pred$class
+
+lda.class
+
+lda.post = lda.pred$posterior
+
+lda.post
+
+lda.x = lda.pred$x
+
+lda.x
+```
+
+
+## Code Chunk 4
+```{r}
+
+table(lda.class,Direction.2005)
+
+mean(lda.class==Direction.2005)
+
+``` 
+
+
+## Code Chunk 5
+```{r}
+sum(lda.pred$posterior[,1]>=.5)
+
+sum(lda.pred$posterior[,1]<.5)
+
+lda.pred$posterior[1:12,1]
+
+lda.pred$posterior[1:12,2]
+
+lda.class[1:12]
+```

@@ -1,0 +1,68 @@
+---
+title: "Bagging and Random Forest"
+author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+
+## Bagging and Random Forest
+## Code Chunk 1
+```{r}
+library(MASS)
+
+set.seed(1)
+
+names(Boston)
+
+train = sample(1:nrow(Boston),nrow(Boston)/2)
+
+boston.test=Boston[-train,"medv"]
+```
+
+## Code Chunk 2
+```{r}
+library(randomForest)
+
+set.seed(1)
+
+bag.boston = randomForest(medv~., data=Boston, subset=train, mtry=13, importance=TRUE)
+
+bag.boston
+```
+
+## Code Chunk 3
+```{r}
+yhat.bag = predict(bag.boston, newdata = Boston[-train,])
+
+plot(yhat.bag,boston.test)
+
+mean((yhat.bag-boston.test)^2)
+```
+
+## Code Chunk 4
+```{r}
+
+bag.boston = randomForest(medv~.,data = Boston, subset=train, mtry=13, ntree=25)
+
+yhat.bag = predict(bag.boston,newdata = Boston[-train,])
+
+mean((yhat.bag-boston.test)^2)
+```
+
+## Code Chunk 5
+```{r}
+set.seed(1)
+
+rf.boston = randomForest(medv~.,data=Boston,subset=train,mtry=6,importance = TRUE)
+
+yhat.rf = predict(rf.boston,newdata = Boston[-train,])
+
+mean((yhat.rf-boston.test)^2)
+```
+
+## Code Chunk 6
+```{r}
+varImpPlot(rf.boston)
+
+importance(rf.boston)
+```
+

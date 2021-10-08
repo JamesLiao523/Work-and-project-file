@@ -1,0 +1,18 @@
+The portfolio model includes following features:
+
+1. Adjustable Mean Varuiance Portfolio Model => Calculate Max sharp ratio, Max return, or Min Volatility, allocate weight 
+	1. If no weight restriction on each asset, certain assets may weight to zero
+	2. Give each assets' category weights (ex: Stocks 70%, Bonds 20%, REITS 10%)
+	3. Give each asset minimum bar (ex: AAPL 1%)
+	4. Combine 2 and 3
+2. Output :
+	1. Weight vector for the portfolio
+	2. Annual Return
+	3. Annual Volatility
+	4. Sharpe Ratio
+	5. Maximum drawdown
+
+
+Future work:
+	1. Draw mean variance efficient frontier figure for better visualization
+	2. Try multiple asset allocation methods

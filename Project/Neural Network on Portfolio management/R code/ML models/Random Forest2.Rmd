@@ -1,0 +1,62 @@
+---
+title: "Boosted Trees"
+author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+
+## Boosted Trees
+## Code Chunk 1
+```{r}
+
+library(MASS)
+
+set.seed(1)
+
+train = sample(1:nrow(Boston),nrow(Boston)/2)
+```
+
+
+## Code Chunk 2
+```{r}
+library(gbm)
+
+set.seed(1)
+
+boost.boston = gbm(medv~.,Boston[train,],distribution = "gaussian", n.trees=5000,interaction.depth=4)
+
+summary(boost.boston)
+```
+
+## Code Chunk 3
+```{r}
+par(mfrow=c(1,2))
+
+plot(boost.boston,i="rm")
+
+plot(boost.boston,i="lstat")
+
+par(mfrow=c(1,1))
+```
+
+## Code Chunk 4
+```{r}
+yhat.boost=predict(boost.boston,newdata=Boston[-train,],n.trees=5000)
+
+boston.test=Boston[-train,"medv"]
+
+mean((yhat.boost-boston.test)^2)
+```
+
+## Code Chunk 5
+```{r}
+boost.boston = gbm(medv~.,data=Boston[train,],distribution="gaussian",n.trees=5000,interaction.depth=4,shrinkage=0.2,verbose=F)
+
+yhat.boost=predict(boost.boston,newdata=Boston[-train,],n.trees=5000)
+
+mean((yhat.boost-boston.test)^2)
+
+yhat.boost=predict(boost.boston,newdata=Boston[-train,],n.trees=500)
+
+mean((yhat.boost-boston.test)^2)
+```
+

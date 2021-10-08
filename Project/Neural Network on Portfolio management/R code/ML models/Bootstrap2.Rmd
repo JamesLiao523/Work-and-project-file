@@ -1,0 +1,271 @@
+---
+title: "Subset Selection"
+author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+
+## Best Subset Selection
+## Code Chunk 1
+```{r}
+library (ISLR)
+
+fix(Hitters)
+
+names(Hitters)
+
+dim(Hitters)
+```
+
+## Code Chunk 2
+```{r}
+sum(is.na(Hitters$Salary))
+
+Hitters = na.omit(Hitters)
+
+dim(Hitters)
+
+sum(is.na(Hitters$Salary))
+```
+
+## Code Chunk 3
+```{r}
+library(leaps)
+
+regfit.full = regsubsets(Salary~.,Hitters)
+
+summary(regfit.full)
+```
+
+## Code Chunk 4
+```{r}
+regfit.full = regsubsets(Salary~.,Hitters,nvmax = 19) ##default nvmax is 8
+
+reg.summary = summary(regfit.full)
+
+names(reg.summary)
+
+```
+
+
+## Code Chunk 5
+```{r}
+reg.summary$rsq
+
+plot(reg.summary$rss,xlab="Number of Predictors", ylab = "RSS", type = "l")
+
+plot(reg.summary$adjr2,xlab="Number of Predictors", ylab = "Adjusted RSq", type = "l")
+
+which.max(reg.summary$adjr2)
+
+points(11,reg.summary$adjr2[11],col="red",cex=2,pch=20)
+```
+
+## Code Chunk 6
+```{r}
+plot(reg.summary$cp,xlab="Number of Predictors", ylab = "Cp", type = "l")
+
+which.min(reg.summary$cp)
+
+points(10,reg.summary$cp[10],col="red",cex=2,pch=20)
+```
+
+## Code Chunk 7
+```{r}
+plot(reg.summary$bic,xlab="Number of Predictors", ylab = "BIC", type = "l")
+
+which.min(reg.summary$bic)
+
+points(6,reg.summary$bic[6],col="red",cex=2,pch=20)
+
+coef(regfit.full,6)
+
+```
+
+
+## Code Chunk 8
+```{r}
+plot(regfit.full,scale="r2")
+```
+
+## Code Chunk 9
+```{r}
+plot(regfit.full,scale="adjr2")
+```
+
+## Code Chunk 10
+```{r}
+plot(regfit.full,scale="Cp")
+```
+
+## Code Chunk 11
+```{r}
+plot(regfit.full,scale="bic")
+
+```
+
+##Forward and Backward Stepwise Selection
+## Code Chunk 12
+```{r}
+
+regfit.fwd = regsubsets(Salary~.,data = Hitters, nvmax = 19, method = "forward")
+
+summary(regfit.fwd)
+```
+
+## Code Chunk 13
+```{r}
+regfit.bwd = regsubsets(Salary~., data = Hitters, nvmax = 19, method = "backward")
+
+summary(regfit.bwd)
+```
+
+## Code Chunk 14
+```{r}
+
+coef(regfit.full,7)
+
+coef(regfit.fwd,7)
+
+coef(regfit.bwd,7)
+
+```
+
+## Choosing Among Models Using the Validation Set Approach and Cross-Validation
+## Code Chunk 15
+```{r}
+set.seed(1)
+
+train = sample(c(TRUE,FALSE),nrow(Hitters),rep=T)
+
+train
+
+summary(train)
+
+test = (!train)
+```
+
+## Code Chunk 16
+```{r}
+regfit.best = regsubsets(Salary~.,data = Hitters[train,], nvmax = 19)
+
+test.mat = model.matrix(Salary~.,data=Hitters[test,])
+
+test.mat
+```
+
+## Code Chunk 17
+```{r}
+
+val.errors = rep(NA,19)
+
+val.errors
+
+coefi = coef(regfit.best, id = 1)
+
+coefi
+
+names(coefi)
+
+test.mat[,names(coefi)]
+
+pred = test.mat[,names(coefi)]%*%coefi
+
+pred
+```
+
+## Code Chunk 18
+```{r}
+
+for(i in 1:19){
+
+  coefi = coef(regfit.best, id = i)
+  pred = test.mat[,names(coefi)]%*%coefi
+  val.errors[i] = mean((Hitters$Salary[test]-pred)^2)  
+}
+
+val.errors
+
+which.min(val.errors)
+
+coef(regfit.best,10)
+```
+
+## Code Chunk 19
+```{r}
+
+regfit.best=regsubsets(Salary~.,data=Hitters,nvmax=19)
+
+coef(regfit.best,10)
+```
+
+
+##Our Own Predict Function!!!
+## Code Chunk 20
+```{r}
+
+predict.regsubsets = function(object,newdata,id,...){
+   form=as.formula(object$call[[2]])
+   mat=model.matrix(form,newdata)
+   coefi=coef(object,id=id)
+   xvars=names(coefi)
+   mat[,xvars]%*%coefi
+}
+```
+
+## Code Chunk 21
+```{r}
+k = 10
+
+set.seed(1)
+
+
+folds = sample(1:k, nrow(Hitters),replace=T)
+
+folds
+
+summary(folds)
+
+cv.errors = matrix(NA,k,19,dimnames=list(NULL,paste(1:19)))
+
+cv.errors
+```
+
+
+## Code Chunk 22
+```{r}
+
+for(j in 1:k){
+   best.fit = regsubsets(Salary~.,data = Hitters[folds!=j,], nvmax=19)
+   for(i in 1:19){
+      pred=predict(best.fit,Hitters[folds==j,],id = i)
+      cv.errors[j,i]= mean((Hitters$Salary[folds==j]-pred)^2)
+   }
+
+}
+
+cv.errors
+
+best.fit$call[[2]]
+```
+
+
+
+## Code Chunk 23
+```{r}
+mean.cv.errors = apply(cv.errors,2,mean)
+
+mean.cv.errors
+
+which.min(mean.cv.errors)
+
+plot(mean.cv.errors,type='b')
+```
+
+## Code Chunk 24
+```{r}
+reg.best = regsubsets(Salary~.,data = Hitters, nvmax = 19)
+
+coef(reg.best,11)
+
+contrasts(Hitters$Division)
+```

@@ -1,0 +1,226 @@
+---
+title: "Lab3"
+author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+
+## 3.6.2 Simple Linear Regression
+## Boston Data-Set in package MASS
+##Code Chunk 1
+```{r}
+library(MASS)
+
+fix(Boston)
+
+names(Boston)
+```
+
+##Fitting linear regression
+##Code Chunk 2
+```{r}
+lm.fit=lm(medv~lstat) ##calling lm function without mentioning data set
+
+lm.fit=lm(medv~lstat, data = Boston)## Proper way to call lm()
+
+attach(Boston) ##attaching lets use lm without referencing to the data set
+
+lm.fit=lm(medv~lstat) 
+
+```
+
+## Model Summary
+##Code Chunk 3
+```{r}
+lm.fit ##basic information about the model output
+
+summary(lm.fit) ##more information about the model output
+
+names(lm.fit) ##other information in lm.fit
+
+lm.fit$coefficients ##explicitly asking for co-efficients in lm.fit
+
+coef(lm.fit) ## another way
+
+confint(lm.fit) ## confidence interval for Betas
+```
+
+##confidence interval and prediction interval for medv at a value of lstat
+##Code Chunk 4
+```{r}
+predict(lm.fit,data.frame(lstat=c(5,10,15)),interval="confidence")
+
+predict(lm.fit,data.frame(lstat=c(5,10,15)),interval="prediction")
+```
+
+##plot the fitted model
+##lwd - controls width of the line; pch - controls plotting symbols
+##Code Chunk 5
+```{r}
+plot(lstat,medv)
+abline(lm.fit)
+
+plot(lstat,medv)
+abline(lm.fit,lwd=3) ##line becomes 3 times wider
+
+plot(lstat,medv)
+abline(lm.fit,lwd=3,col = "red")
+
+plot(lstat,medv,col="red")
+
+plot(lstat,medv,pch=7)
+ 
+plot(lstat,medv,pch="+")
+
+plot(1:20,1:20,pch=1:20)
+```
+
+
+## More Plots
+##Code Chunk 6
+```{r}
+par(mfrow=c(2,2)) ##divide plotting region into 2*2
+
+plot(lm.fit)
+
+par(mfrow=c(1,1)) ##reset plotting region
+
+plot(predict(lm.fit),residuals(lm.fit))
+
+plot(predict(lm.fit),rstudent(lm.fit))
+
+plot(hatvalues(lm.fit)) ##Leverage
+
+which.max(hatvalues(lm.fit))##the observation with the largest leverage statistic
+```
+
+
+## 3.6.3 Multiple Linear Regression
+##Code Chunk 7
+```{r}
+lm.fit=lm(medv~lstat+age,data=Boston)
+
+summary(lm.fit)
+
+lm.fit=lm(medv~.,data=Boston) ##all predictors
+
+summary(lm.fit)
+```
+
+## Getting model stats
+##Code Chunk 8
+```{r}
+names(lm.fit)
+
+summary(lm.fit)$r.sq ##Getting R^2
+
+summary(lm.fit)$sigma ## Getting RSE
+
+library(car) ##for calculating VIF
+
+vif(lm.fit)##library car needed to get vif
+```
+
+##Excluding Variables
+##Code Chunk 9
+```{r}
+lm.fit1=lm(medv~.-age,data =Boston) ##excluding one variable from the model
+
+summary(lm(medv~.-age,data =Boston))
+
+lm.fit1=update(lm.fit,~.-age)##update can be used to update the model
+
+summary(update(lm.fit,~.-age))
+
+```
+
+## 3.6.4 Interaction
+##Code Chunk 10
+```{r}
+summary(lm(medv~lstat*age,data=Boston))
+
+summary(lm(medv~lstat:age,data=Boston))
+
+```
+
+
+## 3.6.5 Non-Linear Transformations
+##Code Chunk 11
+```{r}
+lm.fit2=lm(medv~lstat+I(lstat^2),data=Boston)
+
+summary(lm.fit2)
+
+lm.fit=lm(medv~lstat, data=Boston)
+
+##Ho = both models fit identically
+##Ha = the full model is superior
+
+anova(lm.fit,lm.fit2)
+```
+
+
+##poly() function for higher order
+##Code Chunk 12
+```{r}
+lm.fit5=lm(medv~poly(lstat,5)) ##UPTO fifth degree
+
+summary(lm.fit5)
+
+summary(lm(medv~log(rm),data=Boston))##log transformation
+
+```
+
+
+## Carseats Data
+##Code Chunk 13
+```{r}
+library(ISLR)
+
+attach(Carseats)
+
+?Carseats
+
+fix(Carseats)
+
+names(Carseats)
+```
+
+## Qualitative Predictors
+##R generates dummy variables automatically
+##Code Chunk 14
+```{r}
+lm.fit=lm(Sales~.+Income:Advertising+Price:Age,data = Carseats)
+
+summary(lm.fit)
+
+contrasts(ShelveLoc) ##contrasts() function returns the coding that R uses for the dummy variables
+
+contrasts(US)
+```
+
+## 3.6.7 Writing Functions
+##Code Chunk 15
+```{r}
+##Creating a function to load two libraries
+LoadLibraries = function(){
+   library(ISLR)
+   library(MASS)
+   print("The libraries ISLR and MASS have been loaded")
+}
+## following code tells what is inside the function
+LoadLibraries
+
+## following code runs the function
+LoadLibraries()
+
+```
+
+## MyMean()
+##Code Chunk 16
+```{r}
+MyMean = function(a,b){
+  (a+b)/2
+}
+MyMean(2,3)
+MyMean(5,55)
+```

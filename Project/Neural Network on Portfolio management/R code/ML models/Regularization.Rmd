@@ -1,0 +1,168 @@
+---
+title: "Module 6 - Ridge Regression and LASSO"
+author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+
+##6.6.1 Ridge Regression
+## Code Chunk 1
+
+```{r}
+library (ISLR)
+
+fix(Hitters)
+
+names(Hitters)
+
+sum(is.na(Hitters$Salary))
+
+Hitters = na.omit(Hitters)
+
+dim(Hitters)
+
+sum(is.na(Hitters$Salary))
+```
+
+## Code Chunk 2
+
+```{r}
+x = model.matrix(Salary~.,Hitters)[,-1]
+
+x
+
+y = Hitters$Salary
+```
+
+## Code Chunk 3
+```{r}
+library(glmnet)
+
+grid = 10^seq(10,-2,length=100)
+
+grid
+
+ridge.mod = glmnet(x,y,alpha=0,lambda=grid)
+
+dim(coef(ridge.mod))
+
+```
+
+## Code Chunk 4
+```{r}
+ridge.mod$lambda[50]
+
+grid[50]
+
+coef(ridge.mod)[,50]
+
+
+ridge.mod$lambda[60]
+
+grid[60]
+
+coef(ridge.mod)[,60]
+
+
+predict(ridge.mod,s= 87.5,type ="coefficients")[1:20,] ##lambda = 100
+```
+
+## Code Chunk 5
+```{r}
+
+set.seed(1)
+
+train = sample(1:nrow(x), nrow(x)/2) ##default replace = FALSE
+
+test = (-train)
+
+y.test = y[test]
+```
+
+
+## Code Chunk 6
+```{r}
+ridge.mod = glmnet(x[train,],y[train],alpha = 0,lambda = grid,thresh = 1e-12)
+## thresh is the threshold for the convergence of the optimization problem.
+
+ridge.pred=predict(ridge.mod,s=4,newx=x[test,])## lambda = 4
+
+mean((ridge.pred-y.test)^2)
+
+
+```
+
+## Code Chunk 7
+```{r}
+mean((mean(y[train])-y.test)^2) ## Null Model
+
+ridge.pred=predict(ridge.mod,s=1e10,newx=x[test,]) 
+
+mean((ridge.pred-y.test)^2) ## Ridge Regression with only intercept
+
+```
+
+## Code Chunk 8
+```{r}
+ridge.pred=predict(ridge.mod,s=0,x =x[train,], y = y[train], newx=x[test,],exact = T)
+
+mean((ridge.pred -y.test)^2)
+
+lm(y~x, subset=train)
+
+predict(ridge.mod,s=0,x =x[train,], y = y[train],exact=T,type="coefficients")[1:20,]
+```
+
+##Cross-validation
+## Code Chunk 9
+```{r}
+set.seed(1)
+
+cv.out = cv.glmnet(x[train,],y[train], alpha=0) ##default is 10-fold cross-validation.
+
+plot(cv.out)
+
+bestlam = cv.out$lambda.min
+
+bestlam
+```
+## Code Chunk 10
+```{r}
+ridge.pred=predict(ridge.mod,s=bestlam,newx=x[test,])
+
+mean((ridge.pred-y.test)^2)
+
+out = glmnet(x,y,alpha=0)
+
+predict(out,type="coefficients",s=bestlam)[1:20,]
+```
+
+## The Lasso
+## Code Chunk 11
+```{r}
+lasso.mod = glmnet(x[train,],y[train],alpha = 1,lambda = grid)
+
+plot(lasso.mod)
+
+set.seed(1)
+
+cv.out = cv.glmnet(x[train,],y[train],alpha=1)
+
+plot(cv.out)
+
+bestlam = cv.out$lambda.min
+
+bestlam
+```
+
+## Code Chunk 12
+```{r}
+lasso.pred=predict(lasso.mod,s=bestlam,newx=x[test,])
+
+mean((lasso.pred-y.test)^2)
+
+out=glmnet(x,y,alpha=1,lambda=grid)
+
+lasso.coef = predict(out,type="coefficients",s=bestlam)[1:20,]
+
+lasso.coef
+```

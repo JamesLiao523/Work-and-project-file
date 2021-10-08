@@ -1,0 +1,130 @@
+---
+Author: "DuraiSundaramoorthi"
+output: pdf_document
+---
+
+#4.6.1 Stock Market Data
+## Code Chunk 1
+
+```{r}
+library(ISLR)
+
+attach(Smarket)
+
+names(Smarket)
+
+dim(Smarket)
+
+fix(Smarket)
+
+summary(Smarket)
+```
+
+## Exploring Patterns
+## Code Chunk 2
+```{r}
+pairs(Smarket)
+
+cor(Smarket)
+
+cor(Smarket[,-9])
+
+plot(Volume)
+```
+
+
+#4.6.2 Logistic Regression
+## Code Chunk 3
+```{r}
+
+glm.fit = glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data = Smarket, family = binomial)
+
+summary(glm.fit)
+
+coef(glm.fit)
+
+summary(glm.fit)$coef
+
+summary(glm.fit)$coef[,4]
+
+```
+
+## Code Chunk 4
+```{r}
+
+glm.probs = predict(glm.fit, type = "response")
+
+glm.probs[1:10]
+
+contrasts(Direction)
+
+glm.pred = rep("Down",1250)
+
+glm.pred
+
+glm.pred[glm.probs>0.5]="Up"
+
+glm.pred
+
+table(glm.pred,Direction)
+
+(507+145)/1250
+
+mean(glm.pred == Direction)
+
+```
+
+## Training and Test Data
+## Code Chunk 5
+```{r}
+
+train = (Year<2005)
+
+train
+
+Smarket.2005 = Smarket[!train,]
+
+dim(Smarket.2005)
+
+Direction.2005 = Direction[!train]
+```
+
+## Logistic Regression
+## Code Chunk 6
+```{r}
+glm.fit = glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume, data = Smarket, family = binomial, subset = train)
+
+glm.probs = predict(glm.fit,Smarket.2005,type = "response")
+
+glm.pred = rep("Down",252)
+
+glm.pred[glm.probs>.5]="Up"
+
+table(glm.pred,Direction.2005)
+
+(77+44)/252
+
+mean(glm.pred == Direction.2005)
+
+mean(glm.pred != Direction.2005)
+```
+
+
+## Logistic Regression
+## Code Chunk 7
+```{r}
+glm.fit = glm(Direction ~ Lag1+Lag2, data = Smarket, family = binomial, subset = train)
+
+
+glm.probs = predict(glm.fit,Smarket.2005, type = "response")
+
+glm.pred = rep("Down", 252)
+
+glm.pred[glm.probs>0.5] = "Up"
+
+table(glm.pred,Direction.2005)
+
+mean(glm.pred == Direction.2005)
+
+predict(glm.fit,newdata = data.frame(Lag1 = c(1.2,1.5),Lag2 = c(1.1,-0.8)),type="response")
+```
