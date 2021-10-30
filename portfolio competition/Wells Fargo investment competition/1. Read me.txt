@@ -1,3 +1,6 @@
+Our team- Arrow Capital join the portfolio challenge held by Wells Fargo. The files include portfolio optimization model and quantitative calculation for asset cllocation.
+
+
 The portfolio model includes following features:
 
 1. Mutiple Asset Allocation Method comparison:
