@@ -1,3 +1,8 @@
+This file includes competition docement and modeling work of our team- Venus Capital.
+Our team is honored to be selected in top 25 in the globe for our brilliant asset allocation decision and pension fund strategy.
+
+
+
 The portfolio model includes following features:
 
 1. Adjustable Mean Varuiance Portfolio Model => Calculate Max sharp ratio, Max return, or Min Volatility, allocate weight 
