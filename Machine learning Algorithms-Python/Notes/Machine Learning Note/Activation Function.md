@@ -11,8 +11,6 @@
 
 
 
-
-
 ####  Common Activation Function:
 > - Sigmoid Function
 > - Tanh Function

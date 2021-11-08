@@ -19,6 +19,7 @@
 #### Resolution
 
 1.  Minibatch:
+refer to [[Gradient Descent]]
 
 
 

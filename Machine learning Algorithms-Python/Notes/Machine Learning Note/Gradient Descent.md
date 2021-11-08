@@ -63,4 +63,5 @@
 > > 2. Takes longer time and not efficient to compute (Not vectorized)
 > - Mini-Batch : Need experience to adjust batch manually
 
+#### Visualize route 
 ![[Pasted image 20211107225948.png]]

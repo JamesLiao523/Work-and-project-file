@@ -1,5 +1,5 @@
 ### Definition:
-> - Use gradient descent method in Neural Network, and optimize weight to get minimum Loss Function
+> - Use [[Gradient Descent]] method in Neural Network, and optimize weight to get minimum Loss Function
 > - The algorithm is used to train a neural network by chain rule
 
 
