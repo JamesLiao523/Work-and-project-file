@@ -1,4 +1,4 @@
-.obsidian/
+
 
 #### Defination: 
 > - A Function used in Neural Network. Its purpose is to let model learn and train non-linear function.
