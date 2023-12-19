@@ -1,0 +1,12 @@
+##
+## FILE: classpath.txt
+##
+## Generated from gen_classpath.pl
+##
+## Entries:
+##    o path_to_jarfile
+##    o [arch,unix,win]=path_to_jarfile
+##    o $matlabroot/path_to_jarfile
+##    o $jre_home/path_to_jarfile
+##
+../../bin/OptJAVAAPI.jar
