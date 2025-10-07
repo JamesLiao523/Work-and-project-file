@@ -6,4 +6,4 @@ ___
 UK and EU gov want DC default pensions pods to put a more money into private markets. The snag is most DC defaults trade daily, while classic PE/VC is locked up for years. New wrappers like ELTIF 2.0 (EU) and LTAF (UK) help by allowing semi-liquid funds with set dealing windows, but moving from daily to monthly/quarterly dealing still takes real plumbing—cash buffers, clear calendars, tighter valuations, and good member comms.
 
 (UK/EU DC defaults face the daily-dealing friction
-In the UK (and often EU workplace DC), the default is commonly daily-priced/dealt for payroll flows and member switches.)
+In the UK (and often EU workplace DC), the default is commonly daily-priced/dealt for payroll flows and member switches. That clashes with closed-end PE/VC — which is why regulators created LTAF/ELTIF 2.0 as semi-liquid routes.)
