@@ -28,4 +28,8 @@ US (401k/DB): The employer’s Investment Committee (ERISA fiduciary) can hire/f
 
 UK (DC, master trust): The trustee board (not the employer) is the fiduciary that selects and oversees managers/funds. Employers usually plug into the scheme’s default/menu; you can influence or request a bespoke section, but the trustee/provider makes the call.
 
+____
+
+The European Commission is drafting reforms to expand ESMA’s supervision powers. If adopted, ESMA would take direct supervision of key cross-border players—stock exchanges, crypto firms, and clearing houses—reducing today’s patchwork of 27 national regulators and aiming for more consistent enforcement across the EU.
+today, 27 national regulators do most of the day-to-day supervising, which can lead to uneven application. the commission’s new idea is to centralize some of that supervision at ESMA to reduce fragmentation and arbitrage
 
