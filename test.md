@@ -17,7 +17,7 @@ Reason & Implications
 - The FCA also seeks feedback on using stablecoins for settlement and warned of potential consumer protection and market stability risks.
 
 Reason & Implications
-The move reflects the UK’s effort to modernize its asset management industry and appeal to tech-savvy investors, but it also introduces new regulatory and operational challenges as public blockchain adoption expands within traditional finance.
+- The move reflects the UK’s effort to modernize its asset management industry and appeal to tech-savvy investors, but it also introduces new regulatory and operational challenges as public blockchain adoption expands within traditional finance.
 
 
 “Tokenisation” means representing ownership of a fund (or its shares/units) as digital tokens recorded on a blockchain rather than in a traditional registry system.
