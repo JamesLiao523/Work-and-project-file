@@ -1,7 +1,4 @@
-
-### <span style="color:#0070C0;">FTSE Russell</span> and <span style="color:#E67E22;">StepStone Group</span> launched the <span style="color:#2E7D32;">FTSE StepStone Global Private Market Indices</span>, the first <span style="color:#8E44AD;">daily benchmarks</span> for global private markets. They replace traditional quarterly, model-based composites with a data-driven, high-frequency approach.
-
-
+### **FTSE Russell and StepStone Group launched the FTSE StepStone Global Private Market Indices, the first daily benchmarks for global private markets. They replace traditional quarterly, model-based composites with a data-driven, high-frequency approach.**
 
 Coverage
 - Asset classes: Private Equity (Buyout, Growth, Venture), Private Credit, Real Estate, Infrastructure, and Real Assets/Natural Resources.
@@ -25,6 +22,7 @@ StepStone provides aggregated, de-identified fund-level return data; FTSE Russel
 
 
 
+---- 
 
 ### **FCA eases short selling rules for hedge funds**
 
@@ -32,6 +30,8 @@ StepStone provides aggregated, de-identified fund-level return data; FTSE Russel
 - It will no longer publish individual hedge funds’ name and their short positions, instead showing only anonymized, aggregate data for positions above 0.2% of a company’s shares. The regulator will also extend disclosure deadlines and simplify exemptions for market makers.
 - Greater flexibility for hedge funds and short sellers, but some concern that the reduced transparency could make markets less efficient and  reduced oversight of potenetial risk
 
+
+----
 
 ### **JPMorgan Tokenizes Private-Equity Fund on Its Own Blockchain**
 
