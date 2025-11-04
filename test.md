@@ -15,10 +15,10 @@ Methodologies
 - Daily Market Index	Adds mark-to-market calibration	Incorporates public-market proxies (e.g., MSCI World, credit spreads) with historical betas to estimate interim valuation changes.
 Why It’s Different
 
-Traditional data sources (Preqin, PitchBook, Burgiss) rely on voluntary, quarterly, lagged submissions.
-StepStone has real-time, first-party LP transaction data from its $150 B+ advisory and investment relationships with thousands of GPs.
-Receives every capital call, distribution, and NAV notice directly as an investor.
-Enables accurate, continuous valuation updates across private-market funds.
+* Traditional data sources (Preqin, PitchBook, Burgiss) rely on voluntary, quarterly, lagged submissions.
+* StepStone has real-time, first-party LP transaction data from its $150 B+ advisory and investment relationships with thousands of GPs.
+* Receives every capital call, distribution, and NAV notice directly as an investor.
+* Enables accurate, continuous valuation updates across private-market funds.
 
 StepStone is an SEC-registered investment adviser and must comply with fiduciary-duty and confidentiality rules for its LP clients.
 StepStone provides aggregated, de-identified fund-level return data; FTSE Russell never sees the raw confidential records.
