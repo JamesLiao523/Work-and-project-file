@@ -1,5 +1,6 @@
 
-### <span style="color:#Blue">FTSE Russell and StepStone Group launched the FTSE StepStone Global Private Market Indices, the first daily benchmarks for global private markets. They replace traditional quarterly, model-based composites with a data-driven, high-frequency approach.</span>
+### <span style="color:#0070C0;">FTSE Russell</span> and <span style="color:#E67E22;">StepStone Group</span> launched the <span style="color:#2E7D32;">FTSE StepStone Global Private Market Indices</span>, the first <span style="color:#8E44AD;">daily benchmarks</span> for global private markets. They replace traditional quarterly, model-based composites with a data-driven, high-frequency approach.
+
 
 
 Coverage
