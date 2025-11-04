@@ -1,7 +1,5 @@
-FTSE Russell × StepStone Global Private Market Indices 
 
-Overview:
-FTSE Russell and StepStone Group launched the FTSE StepStone Global Private Market Indices, the first daily benchmarks for global private markets. They replace traditional quarterly, model-based composites with a data-driven, high-frequency approach.
+### **FTSE Russell and StepStone Group launched the FTSE StepStone Global Private Market Indices, the first daily benchmarks for global private markets. They replace traditional quarterly, model-based composites with a data-driven, high-frequency approach.**
 
 Coverage
 - Asset classes: Private Equity (Buyout, Growth, Venture), Private Credit, Real Estate, Infrastructure, and Real Assets/Natural Resources.
@@ -22,3 +20,21 @@ Why It’s Different
 
 StepStone is an SEC-registered investment adviser and must comply with fiduciary-duty and confidentiality rules for its LP clients.
 StepStone provides aggregated, de-identified fund-level return data; FTSE Russell never sees the raw confidential records.
+
+
+
+
+### **FCA eases short selling rules for hedge funds**
+
+- The UK wants to align more closely with US Markets, where only aggregate short positions are disclosed.
+- It will no longer publish individual hedge funds’ name and their short positions, instead showing only anonymized, aggregate data for positions above 0.2% of a company’s shares. The regulator will also extend disclosure deadlines and simplify exemptions for market makers.
+- Greater flexibility for hedge funds and short sellers, but some concern that the reduced transparency could make markets less efficient and  reduced oversight of potenetial risk
+
+
+### **JPMorgan Tokenizes Private-Equity Fund on Its Own Blockchain**
+
+- JPMorgan has tokenized a private-equity fund on its proprietary blockchain platform-Kinexys , enabling private-bank clients to hold fund ownership as digital tokens. 
+- This initiative could pave the way for greater operational efficiency, transparency, and fractional ownership, making participation mroe accessible comparing to  traditional illiquid private-equity products accessible.
+- It marks the first move by a U.S. bank into tokenizing illiquid alternative assets.
+- BNY Mellon and Goldman Sachs have collaborated to tokenize money-market funds, targeting a more liquid segment of the market..
+
