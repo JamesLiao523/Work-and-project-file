@@ -1,5 +1,6 @@
 
-### **FTSE Russell and StepStone Group launched the FTSE StepStone Global Private Market Indices, the first daily benchmarks for global private markets. They replace traditional quarterly, model-based composites with a data-driven, high-frequency approach.**
+### <span style="color:#Blue">FTSE Russell and StepStone Group launched the FTSE StepStone Global Private Market Indices, the first daily benchmarks for global private markets. They replace traditional quarterly, model-based composites with a data-driven, high-frequency approach.</span>
+
 
 Coverage
 - Asset classes: Private Equity (Buyout, Growth, Venture), Private Credit, Real Estate, Infrastructure, and Real Assets/Natural Resources.
