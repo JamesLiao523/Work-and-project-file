@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime, timezone, timedelta, date
 
-API_KEY  ="db-QAh8G7eqawnmkPcNpK3dGVdYaXsdb"
+API_KEY  =""
 client    = db.Historical(API_KEY)
 today     = datetime.now(tz=timezone.utc)
 THIRTY    = (today - timedelta(days=30)).strftime("%Y-%m-%d")
